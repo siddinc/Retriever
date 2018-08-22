@@ -1,0 +1,75 @@
+{% extends 'apptemplates/base.html' %}
+
+  {% block content %}
+
+    <div class="container">
+      <div class="card mx-auto">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-sm-6 text-left my-auto">
+              <h2 id="x7">{{ user_data.name }}</h2>
+            </div>
+            <div class="col-sm-6 text-right my-auto">
+              <h2 id="x7"><a href="{{ user_data.html_url }}"><i class="fab fa-github"></i> {{ user_data.login }}</a></h2>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6 text-center">
+              <img class="img-circle my-auto" src="{{ user_data.avatar_url }}" alt="OOPS!" width="150" height="150">
+            </div>
+            <div class="col-sm-6 user_info x7 my-auto">
+              <ul>
+                <h3><b>Public Repositories: </b>{{ user_data.public_repos }}</h3>
+                <h3><b>Followers: </b>{{ user_data.followers }}</h3>
+                <h3><b>Following: </b>{{ user_data.following }}</h3>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+
+      {% if repo_data|length > 0 %}
+        <ul class="list-unstyled">
+          {% for repo in repo_data %}
+            <li>
+              <div class="card mx-auto">
+                <div class="card-header">
+                  <h2 class="my-auto" id="x8"><a href="{% url 'githubapi:user_commit' owner=repo.owner.login repo_name=repo.name %}">{{ repo.name }}</a></h2>
+                </div>
+                <div class="card-body x8">
+                  <div class="row">
+                    <div class="col-sm-6 text-left my-auto">
+                      <h4><b>Main Language: </b>{{ repo.language }}</h4>
+                      <h4><b>Forks: </b>{{ repo.forks_count }}</h4>
+                      <h4><b>Creation Date: </b>{{ repo.created_at }}</h4>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4><b>Description:</b></h4>
+                      <h5>{{ repo.description }}</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <br>
+          {% endfor %}
+        </ul>
+
+      {% else %}
+        <div class="card mx-auto">
+          <div class="card-header">
+            <h1 class="my-auto" id="x9">Public Repositories Non-existent</h1>
+          </div>
+          <div class="card-body">
+            <p class="x9 my-auto">Woops! Looks like <span><b>{{ user_data.login }}</b></span> has no public repositories. <i class="far fa-frown"></i></p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    <br>
+
+  {% endblock %}

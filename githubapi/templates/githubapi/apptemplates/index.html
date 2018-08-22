@@ -1,0 +1,19 @@
+{% extends 'apptemplates/base.html' %}
+
+  {% block content %}
+
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="my-auto" id="x1">Welcome to Retriever</h1>
+        </div>
+        <div class="card-body">
+          <p class="x1">This is a website which uses the <a href="https://developer.github.com/v3/">GitHub REST API v3</a> to get the data queried by registered users.</p>
+          <p class="x1">Search any GitHub username and get information about his/her public repositories and commit history.</p>
+          <p class="x1"><a href="{% url 'githubapi:login' %}">Sign In</a> or <a href="{% url 'githubapi:signup' %}">Register</a>!</p>
+        </div>
+      </div>
+    </div>
+    <br>
+
+  {% endblock %}

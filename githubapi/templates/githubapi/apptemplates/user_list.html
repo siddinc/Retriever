@@ -1,0 +1,34 @@
+{% extends 'apptemplates/base.html' %}
+
+  {% block content %}
+
+    <div class="container">
+      <div class="card mx-auto">
+        <div class="card-header">
+          {% if user_list.items|length > 1 %}
+            <h1 class="my-auto" id="x11">Users found</h1>
+          {% else %}
+            <h1 class="my-auto" id="x11">User found</h1>
+          {% endif %}
+        </div>
+        <div class="card-body x11">
+          <ul class="list-group list-group-flush">
+            {% for user_item in user_list.items %}
+              <li class="list-group-item text-left">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <img class="img-circle my-auto" src="{{ user_item.avatar_url }}" alt="OOPS!" width="100" height="100">
+                  </div>
+                  <div class="col-sm-6 text-right my-auto">
+                    <h3><a href="{% url 'githubapi:user_detail' username=user_item.login %}">{{ user_item.login }}</a></h3>
+                  </div>
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <br>
+
+  {% endblock content %}

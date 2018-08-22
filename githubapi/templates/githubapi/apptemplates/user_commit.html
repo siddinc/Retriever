@@ -1,0 +1,25 @@
+{% extends 'apptemplates/base.html' %}
+
+  {% block content %}
+
+    <div class="container">
+      <div class="card mx-auto">
+        <div class="card-header">
+          <h1 class="my-auto" id="x10">Commit History of {{ repo_name }}</h1>
+        </div>
+        <div class="card-body x10">
+          <ul class="list-group list-group-flush">
+            {% for commit_item in commit_data %}
+              <li class="list-group-item">
+                <h4><b>Commit Author: </b>{{ commit_item.commit.author.name }}</h4>
+                <h4><b>Commit Date: </b>{{ commit_item.commit.author.date }}</h4>
+                <h4><b>Commit Message: </b>{{ commit_item.commit.message }}</h4>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <br>
+
+  {% endblock %}

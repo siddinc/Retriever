@@ -1,0 +1,18 @@
+{% extends 'apptemplates/base.html' %}
+
+  {% block content %}
+
+    <div class="container">
+      <div class="card mx-auto">
+        <div class="card-header">
+          <h1 class="my-auto" id="x6">Error 404</h1>
+        </div>
+        <div class="card-body">
+          <p class="x6">Woops! Looks like this username doesn't exist. <i class="far fa-frown"></i></p>
+          <h3 class="text-center"><a href="{% url 'githubapi:user_search' %}"><button type="button" class="btn btn-outline-success btn-lg">Search a user</button></a></h3>
+        </div>
+      </div>
+    </div>
+    <br>
+
+  {% endblock %}
