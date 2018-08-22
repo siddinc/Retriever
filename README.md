@@ -1,5 +1,4 @@
 # RETRIEVER
-----
 - This is the first **DJ Unicode** task.
 - Retriever is a website which uses the **GitHub REST API v3** to get the data queried by registered users.
 
